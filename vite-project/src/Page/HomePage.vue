@@ -1,38 +1,39 @@
 <template>
-    <div>
-      <form @submit.prevent="checkPassword">
-        <label for="password">Mot de passe</label>
-        <input v-model="password" type="password" id="password" required />
-        <span v-if="!isPasswordValid" class="error">Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, et un chiffre.</span>
-        <button type="submit" :disabled="!isPasswordValid">Soumettre</button>
-      </form>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        password: "",
-      };
-    },
-    computed: {
-      isPasswordValid() {
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
-        return regex.test(this.password);
-      },
-    },
-    methods: {
-      checkPassword() {
-        alert("Mot de passe validé !");
-      },
-    },
-  };
-  </script>
-  
-  <style scoped>
-  .error {
-    color: red;
-  }
-  </style>
-  
+  <header class="header">
+    <h1>Mon Application</h1>
+    <nav>
+      <ul>
+        <li><router-link to="/">Accueil</router-link></li>
+        <li><router-link to="/login">Connexion</router-link></li>
+      </ul>
+    </nav>
+  </header>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style scoped>
+.header {
+  background: #333;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+.text-red {
+  color: red;
+  margin-left: 10px;
+}
+</style>
